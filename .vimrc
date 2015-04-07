@@ -14,6 +14,7 @@ Plugin 'gmarik/Vundle.vim'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'rking/ag.vim'
 Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/syntastic'
 Bundle 'kien/ctrlp.vim'
 " JS plugins
@@ -117,6 +118,12 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" Resize window
+nnoremap + <C-W>+
+nnoremap _ <C-W>-
+nnoremap = <C-W>>
+nnoremap - <C-W><
+
 " colorscheme peaksea.vim
 if ! has("gui_running")
         set t_Co=256
@@ -208,4 +215,6 @@ let g:ycm_confirm_extra_conf = 0
 let g:syntastic_always_populate_loc_list = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_complete_in_comments = 1
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
 set tags+=./.tags
