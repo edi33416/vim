@@ -37,7 +37,6 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 syntax enable
-" colorscheme badwolf
 set autoindent
 set number
 set so=7
@@ -77,6 +76,7 @@ imap <C-c> <CR><Esc>O
 """""""""""""
 
 let g:syntastic_check_on_open=1
+
 
 """""""""""""""
 " Status line "
@@ -123,7 +123,17 @@ if ! has("gui_running")
 endif
 " feel free to choose :set background=light for a different style
 set background=dark
-colors peaksea
+" colors peaksea
+colors badwolf
+
+
+"""""""""""""""""""""""""
+" Highlight cursor line "
+"""""""""""""""""""""""""
+
+set cursorline
+highlight CursorLine term=bold cterm=bold guibg=Grey40
+
 
 " From Vlad Dogaru
 
@@ -185,10 +195,17 @@ augroup END
 
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" Go to next error
+nnoremap <leader>ne :lnext<CR>
+" Go to previous error
+nnoremap <leader>be :lprevious<CR>
+
+let g:ycm_always_populate_location_list = 1
 
 "let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
 let g:syntastic_always_populate_loc_list = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_complete_in_comments = 1
 set tags+=./.tags
