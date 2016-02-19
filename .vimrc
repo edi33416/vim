@@ -17,6 +17,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/syntastic'
 Bundle 'kien/ctrlp.vim'
+Plugin 'flazz/vim-colorschemes'
 " JS plugins
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'pangloss/vim-javascript'
