@@ -48,10 +48,21 @@ set ignorecase
 set hlsearch
 set incsearch
 set magic
-set expandtab
 set smarttab
-set shiftwidth=4
-set tabstop=4
+
+" Set tabs and their width for kernel development
+if (system('pwd | grep "/home/fawkes/Facultate/AnulIV/SO2\|/home/fawkes/SO2"') != "")
+    "echom "Working on kernel stuff"
+    set noexpandtab
+    set shiftwidth=8
+    set tabstop=8
+else
+    "echom "Not working on kernel stuff"
+    set expandtab
+    set shiftwidth=4
+    set tabstop=4
+endif
+
 set ai
 set si
 set wrap
@@ -118,6 +129,16 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+map <leader>1 1gt
+map <leader>2 2gt
+map <leader>3 3gt
+map <leader>4 4gt
+map <leader>5 5gt
+map <leader>6 6gt
+map <leader>7 7gt
+map <leader>8 8gt
+map <leader>9 9gt
+
 " Resize window
 nnoremap + <C-W>+
 nnoremap _ <C-W>-
@@ -139,7 +160,7 @@ colors badwolf
 """""""""""""""""""""""""
 
 set cursorline
-highlight CursorLine term=bold cterm=bold guibg=Grey40
+highlight CursorLine term=bold cterm=bold guibg=Grey40 ctermbg=None ctermfg=None
 
 
 " From Vlad Dogaru
