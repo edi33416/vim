@@ -239,4 +239,13 @@ let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_complete_in_comments = 1
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
+
+" Add autocomplete for languages that are not supported by ycm
+if has("autocmd") && exists("+omnifunc")
+        autocmd Filetype *
+                    \   if &omnifunc == "" |
+                    \       setlocal omnifunc=syntaxcomplete#Complete |
+                    \   endif
+            endif
+
 set tags+=./.tags
