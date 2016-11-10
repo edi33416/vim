@@ -18,6 +18,13 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/syntastic'
 Bundle 'kien/ctrlp.vim'
 Plugin 'flazz/vim-colorschemes'
+
+" ultisnips
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Bundle 'ervandew/supertab'
+Plugin 'kiith-sa/DSnips'
+
 " JS plugins
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'pangloss/vim-javascript'
@@ -89,6 +96,7 @@ imap <C-c> <CR><Esc>O
 """""""""""""
 
 let g:syntastic_check_on_open=1
+let g:syntastic_d_config_file="~/.syntastic_d_config"
 
 
 """""""""""""""
@@ -153,7 +161,8 @@ endif
 " feel free to choose :set background=light for a different style
 set background=dark
 " colors peaksea
-colors badwolf
+colors transparent
+"colors badwolf
 
 
 """""""""""""""""""""""""
@@ -162,6 +171,7 @@ colors badwolf
 
 set cursorline
 highlight CursorLine term=bold cterm=bold guibg=Grey40 ctermbg=None ctermfg=None
+hi NonText ctermbg=None
 
 
 " From Vlad Dogaru
@@ -247,5 +257,20 @@ if has("autocmd") && exists("+omnifunc")
                     \       setlocal omnifunc=syntaxcomplete#Complete |
                     \   endif
             endif
+
+"""""""""""""
+" UltiSnips "
+"""""""""""""
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsEditSplit="vertical"
 
 set tags+=./.tags
