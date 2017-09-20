@@ -11,6 +11,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 " All of your Plugins must be added before the following line
 
+Bundle 'idanarye/vim-dutyl'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'rking/ag.vim'
 Bundle 'scrooloose/nerdtree'
@@ -18,6 +19,7 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/syntastic'
 Bundle 'kien/ctrlp.vim'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'bkad/CamelCaseMotion'
 
 " ultisnips
 Plugin 'SirVer/ultisnips'
@@ -249,6 +251,7 @@ let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_complete_in_comments = 1
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_semantic_triggers = {'d': ['.', 're![a-zA-Z]']}
 
 " Add autocomplete for languages that are not supported by ycm
 if has("autocmd") && exists("+omnifunc")
@@ -274,3 +277,20 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:UltiSnipsEditSplit="vertical"
 
 set tags+=./.tags
+
+
+"""""""""""""
+" vim-dutyl "
+"""""""""""""
+
+let g:dutyl_stdImportPaths=['/usr/include/dmd']
+
+call dutyl#register#tool('dcd-client', '/home/student/DCD/bin/dcd-client')
+call dutyl#register#tool('dcd-server', '/home/student/DCD/bin/dcd-server')
+
+nnoremap <F10> :DUvjump<CR>
+nnoremap <F11> :DUddoc<CR>
+
+let mapleader = ","
+
+call camelcasemotion#CreateMotionMappings('<leader>')
