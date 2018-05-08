@@ -13,6 +13,9 @@ Plugin 'gmarik/Vundle.vim'
 
 Bundle 'idanarye/vim-dutyl'
 Bundle 'dlang-community/DCD'
+"Bundle 'landaire/deoplete-d'
+"Bundle 'tweekmonster/deoplete-clang2'
+"Bundle 'Shougo/deoplete.nvim'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'rking/ag.vim'
 Bundle 'scrooloose/nerdtree'
@@ -300,3 +303,18 @@ nnoremap <F11> :DUddoc<CR>
 let mapleader = ";"
 
 call camelcasemotion#CreateMotionMappings('<leader>')
+
+""""""""""""
+" deoplete "
+""""""""""""
+
+"let g:deoplete#enable_at_startup = 1
+
+"let g:deoplete#sources#d#dcd_client_binary = '/home/student/DCD/bin/dcd-client'
+"let g:deoplete#sources#d#dcd_server_binary = '/home/student/DCD/bin/dcd-server'
+"let g:deoplete#sources#d#dcd_server_autostart = 1
+
+"let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-3.8/lib/libclang-3.8.so.1'
+"let g:deoplete#sources#clang#clang_header = '/usr/lib/clang/3.8/include/'
+
+"autocmd CompleteDone * pclose!
