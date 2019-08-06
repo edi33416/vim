@@ -103,7 +103,10 @@ imap <C-c> <CR><Esc>O
 """""""""""""
 
 let g:syntastic_check_on_open=1
-let g:syntastic_d_config_file="~/.syntastic_d_config"
+"let g:syntastic_d_config_file="~/.syntastic_d_config"
+let g:syntastic_d_compiler = "/home/edis/workspace/dlang/code/dmd/generated/linux/release/64/dmd"
+
+let g:syntastic_d_compiler_options = "-I~/workspace/dlang/code/druntime/import/ -I~/workspace/dlang/code/phobos -L-L$HOME/workspace/dlang/code/phobos/generated/linux/release/64/"
 
 
 """""""""""""""
@@ -264,12 +267,12 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_semantic_triggers = {'d': ['.', 're![a-zA-Z]']}
 
 " Add autocomplete for languages that are not supported by ycm
-if has("autocmd") && exists("+omnifunc")
-        autocmd Filetype *
-                    \   if &omnifunc == "" |
-                    \       setlocal omnifunc=syntaxcomplete#Complete |
-                    \   endif
-            endif
+"if has("autocmd") && exists("+omnifunc")
+        "autocmd Filetype *
+                    "\   if &omnifunc == \"\" |
+                    "\       setlocal omnifunc=syntaxcomplete#Complete |
+                    "\   endif
+            "endif
 
 """""""""""""
 " UltiSnips "
@@ -293,10 +296,12 @@ set tags+=./.tags
 " vim-dutyl "
 """""""""""""
 
-let g:dutyl_stdImportPaths=['/usr/include/dmd/']
+" Also USE https://github.com/BitR/ycmd-dcd for YCM
 
-call dutyl#register#tool('dcd-client', '/home/ubuntu/.vim/bundle/DCD/bin/dcd-client')
-call dutyl#register#tool('dcd-server', '/home/ubuntu/.vim/bundle/DCD/bin/dcd-server')
+let g:dutyl_stdImportPaths=['~/workspace/dlang/code/druntime/import/', '~/workspace/dlang/code/phobos/']
+
+call dutyl#register#tool('dcd-client', '/home/edis/.vim/bundle/DCD/bin/dcd-client')
+call dutyl#register#tool('dcd-server', '/home/edis/.vim/bundle/DCD/bin/dcd-server')
 
 nnoremap <F10> :DUvjump<CR>
 nnoremap <F11> :DUddoc<CR>
