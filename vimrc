@@ -98,17 +98,6 @@ filetype indent on	" load	filetype-specific indent files
 
 imap <C-c> <CR><Esc>O
 
-"""""""""""""
-" Syntastic "
-"""""""""""""
-
-let g:syntastic_check_on_open=1
-"let g:syntastic_d_config_file="~/.syntastic_d_config"
-let g:syntastic_d_compiler = "/home/edis/workspace/dlang/code/dmd/generated/linux/release/64/dmd"
-
-let g:syntastic_d_compiler_options = "-I~/workspace/dlang/code/druntime/import/ -I~/workspace/dlang/code/phobos -L-L$HOME/workspace/dlang/code/phobos/generated/linux/release/64/"
-
-
 """""""""""""""
 " Status line "
 """""""""""""""
@@ -249,17 +238,12 @@ augroup END
 
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-" Go to next error
-nnoremap <leader>ne :lnext<CR>
-" Go to previous error
-nnoremap <leader>be :lprevious<CR>
 
 let g:ycm_always_populate_location_list = 1
 
 "let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
-let g:syntastic_always_populate_loc_list = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_complete_in_comments = 1
 let g:ycm_add_preview_to_completeopt = 1
@@ -273,6 +257,48 @@ let g:ycm_semantic_triggers = {'d': ['.', 're![a-zA-Z]']}
                     "\       setlocal omnifunc=syntaxcomplete#Complete |
                     "\   endif
             "endif
+
+"""""""""""""
+" Syntastic "
+"""""""""""""
+
+let g:syntastic_check_on_open = 1
+let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_d_config_file="~/.syntastic_d_config"
+let g:syntastic_d_compiler = "/home/edis/workspace/dlang/code/dmd/generated/linux/release/64/dmd"
+
+let g:syntastic_d_compiler_options = "-I~/workspace/dlang/code/druntime/import/ -I~/workspace/dlang/code/phobos -L-L$HOME/workspace/dlang/code/phobos/generated/linux/release/64/"
+
+" Go to previous error. Allow :lprev to work with empty location list, or at first location
+function! <SID>LocationPrevious()
+    try
+        lprev
+    catch /:E553:/
+        llast
+    catch /:E\%(42\|776\):/
+        echo "Location list empty"
+    catch /.*/
+        echo v:exception
+    endtry
+endfunction
+
+" Go to next error. Allow :lnext to work with empty location list, or at first location
+function! <SID>LocationNext()
+    try
+        lnext
+    catch /:E553:/
+        lfirst
+    catch /:E\%(42\|776\):/
+        echo "Location list empty"
+    catch /.*/
+        echo v:exception
+    endtry
+endfunction
+
+nnoremap <silent> <Plug>LocationPrevious :<C-u>exe 'call <SID>LocationPrevious()'<CR>
+nnoremap <silent> <Plug>LocationNext :<C-u>exe 'call <SID>LocationNext()'<CR>
+nmap <silent> e[ <Plug>LocationPrevious
+nmap <silent> e] <Plug>LocationNext
 
 """""""""""""
 " UltiSnips "
