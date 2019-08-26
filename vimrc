@@ -145,7 +145,7 @@ map <leader>5 5gt
 map <leader>6 6gt
 map <leader>7 7gt
 map <leader>8 8gt
-map <leader>9 9gt
+map <leader>9 1gtgT
 
 " Resize window
 nnoremap + <C-W>+
@@ -350,3 +350,29 @@ call camelcasemotion#CreateMotionMappings('<leader>')
 "let g:deoplete#sources#clang#clang_header = '/usr/lib/clang/3.8/include/'
 
 "autocmd CompleteDone * pclose!
+
+"""""""""
+" Extra "
+"""""""""
+
+" Wrap a word in "
+nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
+
+" Wrap a word in comments using NerdCommenter
+"nnoremap <leader>/ viw<esc>a*/<esc>bbi/*<esc>lell
+nmap <leader>/ viw<leader>ccf<space>
+
+" Select inside next parentheses
+onoremap in( :<c-u>normal! f(vi(<cr>
+
+" Select inside last parentheses
+onoremap il( :<c-u>normal! F)vi(<cr>
+
+" Search reg S and replace with reg R
+cmap <leader>r s/<c-r>s/<c-r>r/gc
+
+" Save current word into search reg S
+nnoremap <leader>ss viw"sy
+
+" Save current word into replace reg R
+nnoremap <leader>sr viw"ry
