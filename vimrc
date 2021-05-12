@@ -89,7 +89,14 @@ set showmatch	" highlight matching braces
 set formatoptions-=o "dont continue comments when pushing o/O
 "set foldenable	" enable folding
 "set foldmethod=indent " fold based on indent level
+
+set pastetoggle=<F2>
+
 filetype indent on	" load	filetype-specific indent files
+
+set exrc " enable per directory vimrc
+set secure " ensures that shell, autocmd and write commands are not allowed
+           " in the .vimrc file that was found in the current directory
 
 
 """""""""""""""
@@ -153,17 +160,6 @@ nnoremap _ <C-W>-
 nnoremap = <C-W>>
 nnoremap - <C-W><
 
-" colorscheme peaksea.vim
-if ! has("gui_running")
-        set t_Co=256
-endif
-" feel free to choose :set background=light for a different style
-set background=dark
-" colors peaksea
-colors transparent
-"colors badwolf
-
-
 """""""""""""""""""""""""
 " Highlight cursor line "
 """""""""""""""""""""""""
@@ -171,6 +167,23 @@ colors transparent
 set cursorline
 highlight CursorLine term=bold cterm=bold guibg=Grey40 ctermbg=None ctermfg=None
 hi NonText ctermbg=None
+
+"""""""""""""""""""
+" Set colorscheme "
+"""""""""""""""""""
+
+" colorscheme peaksea.vim
+if ! has("gui_running")
+        set t_Co=256
+endif
+" colors peaksea
+colors gruvbox
+"colors transparent
+"colors badwolf
+
+" feel free to choose :set background=light for a different style
+set background=dark
+"set background=light
 
 
 " From Vlad Dogaru
@@ -297,8 +310,8 @@ endfunction
 
 nnoremap <silent> <Plug>LocationPrevious :<C-u>exe 'call <SID>LocationPrevious()'<CR>
 nnoremap <silent> <Plug>LocationNext :<C-u>exe 'call <SID>LocationNext()'<CR>
-nmap <silent> e[ <Plug>LocationPrevious
-nmap <silent> e] <Plug>LocationNext
+nmap <silent> E[ <Plug>LocationPrevious
+nmap <silent> E] <Plug>LocationNext
 
 """""""""""""
 " UltiSnips "
