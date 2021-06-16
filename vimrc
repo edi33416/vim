@@ -25,6 +25,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'kien/ctrlp.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'bkad/CamelCaseMotion'
+Plugin 'mhinz/vim-startify'
 
 " ultisnips
 Plugin 'SirVer/ultisnips'
@@ -389,3 +390,6 @@ nnoremap <leader>ss viw"sy
 
 " Save current word into replace reg R
 nnoremap <leader>sr viw"ry
+
+" Save sessions on quit
+let g:startify_session_persistence = 1
